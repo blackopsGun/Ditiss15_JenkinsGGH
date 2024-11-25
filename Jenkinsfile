@@ -38,8 +38,9 @@ pipeline {
                                                 //Explicit login before push
                                                 sh """
                                                 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-                                                docker push ${DOCKER_IMAGE_NAME}:${IMAGE_TAG}
-                                                """
+                                                docker push ${DOCKER_IMAGE_NAME}:${IMAGE_TAG}        
+					        """
+						}
                                         } catch (Exception e) {
                                                 echo "Failed to push Docker Image to registry: ${e.message}"
                                                 error "Failed to push Docker image"
